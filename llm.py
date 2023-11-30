@@ -38,8 +38,7 @@ async def replicate_request(input, model='mistral'):
         model_urls[model],
         input={"prompt": input},
     )
-    result = ''.join(output)
-    return result
+    return ''.join(output)
 
 
 @limit_concurrency(10)
@@ -51,8 +50,7 @@ async def openai_request(input, model="gpt-3.5-turbo"):
             {"role": "user", "content": input},
         ]
     )
-    result = completion.choices[0].message.content
-    return result
+    return completion.choices[0].message.content
 
 
 @limit_concurrency(2)
